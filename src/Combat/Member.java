@@ -1,6 +1,7 @@
 package Combat;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Member {
 	private int memberId;
@@ -125,7 +126,11 @@ public class Member {
 	private int anti_physical_practice_level;
 	private int anti_magical_practice_level;
 	
-	ArrayList<Buff> buffList;
+	private ArrayList<Buff> stepBeforeOrderBuffList;
+	
+	private ArrayList<Buff> stepAfterOrderBuffList;
+	
+	private boolean isActive;
 	
 	public Member() {
 		
@@ -150,4 +155,38 @@ public class Member {
 	public int getHp_current() {
 		return hp_current;
 	}
+	
+	public int getSpeed_original() {
+		return speed_original;
+	}
+	
+	public int getSpeed_current() {
+		return speed_current;
+	}
+	
+	public ArrayList<Buff> getStepBeforeOrderBuffList() {
+		return stepBeforeOrderBuffList;
+	}
+	
+	public ArrayList<Buff> getStepAfterOrderBuffList() {
+		return stepAfterOrderBuffList;
+	}
+	
+	public boolean isActive() {
+		return isActive;
+	}
+	
+	public void setActive(boolean b) {
+		isActive = b;
+	}
+	
+	public static Comparator<Member> SpeedComparator = new Comparator<Member>() {
+
+		@Override
+		public int compare(Member o1, Member o2) {
+			int speed1 = o1.getSpeed_current();
+			int speed2 = o2.getSpeed_current();
+			return speed1-speed2;
+		}
+	};
 }
