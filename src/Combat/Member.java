@@ -3,9 +3,31 @@ package Combat;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+enum Sect {
+	DT, //1
+	FC, //2
+	HS, //3
+	NE, //4
+	PT, //5
+	LG, //6
+	TG, //7
+	WZ, //8
+	MW, //9
+	STL, //10
+	DF, //11
+	PS, //12
+	SML, //13
+	LBC, //14
+	WDD, //15
+	TJC, //16
+	HGS, //17
+	NBW, //18
+}
+
 public class Member {
 	private int memberId;
-	private String Name;
+	private String name;
+	private Sect sectId;
 	private int team;
 	private boolean isPlayer;
 	
@@ -136,8 +158,16 @@ public class Member {
 		
 	}
 	
+	public int getMemberId() {
+		return memberId;
+	}
+	
 	public int getTeam() {
 		return team;
+	}
+	
+	public Sect getSectId() {
+		return sectId;
 	}
 	
 	public boolean isPlayer() {
@@ -172,7 +202,13 @@ public class Member {
 		return stepAfterOrderBuffList;
 	}
 	
-	public boolean isActive() {
+	public boolean checkActive() {
+		//checkCondition
+		if(getHp_current() == 0) {
+			return false;
+		}
+		
+		
 		return isActive;
 	}
 	

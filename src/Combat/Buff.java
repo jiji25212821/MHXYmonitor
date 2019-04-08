@@ -15,12 +15,4 @@ public class Buff {
 	public int getTypeId() {
 		return typeId;
 	}
-	
-	public void executeBuff() {
-		//check condition
-		
-		//choose target
-		
-		//doskill
-	}
 }

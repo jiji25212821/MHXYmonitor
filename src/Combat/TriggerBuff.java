@@ -8,6 +8,14 @@ public class TriggerBuff extends Buff{
 		
 	}
 	
+	public int getTriggerSkillId() {
+		return triggerSkillId;
+	}
+	
+	public double getHitRate() {
+		return hitRate;
+	}
+	
 	public void executeBuff() {
 		//check condition
 		if(Math.random() < hitRate) {
