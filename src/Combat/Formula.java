@@ -13,6 +13,10 @@ public class Formula {
 		
 	}
 	
+	public String getFormula() {
+		return formula;
+	}
+	
 	public static Formula findFormulaByFormulaId(int formulaId) {
 		return null;
 	}

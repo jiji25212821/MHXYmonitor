@@ -170,6 +170,10 @@ public class Member {
 		return sectId;
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
 	public boolean isPlayer() {
 		return isPlayer;
 	}
@@ -186,12 +190,308 @@ public class Member {
 		return hp_current;
 	}
 	
+	public int getMp_original() {
+		return mp_original;
+	}
+	
+	public int getMp_current() {
+		return mp_current;
+	}
+	
+	public int getPhysicalATK_original() {
+		return physical_ATK_original;
+	}
+	
+	public int getPhysicalATK_current() {
+		return physical_ATK_current;
+	}
+	
+	public int getMagicalATK_original() {
+		return magical_ATK_original;
+	}
+	
+	public int getMagicalATK_current() {
+		return magical_ATK_current;
+	}
+	
+	public int getPhysicalDEF_original() {
+		return physical_DEF_original;
+	}
+	
+	public int getPhysicalDEF_current() {
+		return physical_DEF_current;
+	}
+	
+	public int getMagicalDEF_original() {
+		return magical_DEF_original;
+	}
+	
+	public int getMagicalDEF_current() {
+		return magical_DEF_current;
+	}
+	
+	public int getHit_original() {
+		return hit_original;
+	}
+	
+	public int getHit_current() {
+		return hit_current;
+	}
+	
+	public int getMiss_original() {
+		return miss_original;
+	}
+	
+	public int getMiss_current() {
+		return miss_current;
+	}
+	
 	public int getSpeed_original() {
 		return speed_original;
 	}
 	
 	public int getSpeed_current() {
 		return speed_current;
+	}
+	
+	public int getSealLevel_original() {
+		return seal_level_original;
+	}
+	
+	public int getSealLevel_current() {
+		return seal_level_current;
+	}
+	
+	public double getSealRate_original() {
+		return seal_rate_original;
+	}
+	
+	public double getSealRate_current() {
+		return seal_rate_current;
+	}
+	
+	public int getAntiSealLevel_original() {
+		return anti_seal_level_original;
+	}
+	
+	public int getAntiSealLevel_current() {
+		return anti_seal_level_current;
+	}
+	
+	public double getAntiSealRate_original() {
+		return anti_seal_rate_original;
+	}
+	
+	public double getAntiSealRate_current() {
+		return anti_seal_rate_current;
+	}
+	
+	public int getPhysicalCriticalLevel_original() {
+		return physical_critical_level_original;
+	}
+	
+	public int getPhysicalCriticalLevel_current() {
+		return physical_critical_level_current;
+	}
+	
+	public double getPhysicalCriticalRate_original() {
+		return physical_critical_rate_original;
+	}
+	
+	public double getPhysicalCriticalRate_current() {
+		return physical_critical_rate_current;
+	}
+	
+	public int getAntiPhysicalCriticalLevel_original() {
+		return anti_physical_critical_level_original;
+	}
+	
+	public int getAntiPhysicalCriticalLevel_current() {
+		return anti_physical_critical_level_current;
+	}
+	
+	public double getAntiPhysicalCriticalRate_original() {
+		return anti_physical_critical_rate_original;
+	}
+	
+	public double getAntiPhysicalCriticalRate_current() {
+		return anti_physical_critical_rate_current;
+	}
+	
+	public int getPhysicalCriticalExpandVal_original() {
+		return physical_critical_expand_val_original;
+	}
+	
+	public int getPhysicalCriticalExpandVal_current() {
+		return physical_critical_expand_val_current;
+	}
+	
+	public double getPhysicalCriticalExpandValPecent_original() {
+		return physical_critical_expand_val_percent_original;
+	}
+	
+	public double getPhysicalCriticalExpandValPecent_current() {
+		return physical_critical_expand_val_percent_current;
+	}
+	
+	public int getPhysicalATKResult_original() {
+		return physical_ATK_result_original;
+	}
+	
+	public int getPhysicalATKResult_current() {
+		return physical_ATK_result_current;
+	}
+	
+	public double getPhysicalATKResultRate_original() {
+		return physical_ATK_result_rate_origianl;
+	}
+	
+	public double getPhysicalATKResultRate_current() {
+		return physical_ATK_result_rate_current;
+	}
+	
+	public int getMagicalCriticalLevel_original() {
+		return magical_critical_level_original;
+	}
+	
+	public int getMagicalCriticalLevel_current() {
+		return magical_critical_level_current;
+	}
+	
+	public double getMagicalCriticalRate_original() {
+		return magical_critical_rate_original;
+	}
+	
+	public double getMagicalCriticalRate_current() {
+		return magical_critical_rate_current;
+	}
+	
+	public int getAntiMagicalCriticalLevel_original() {
+		return anti_magical_critical_level_original;
+	}
+	
+	public int getAntiMagicalCriticalLevel_current() {
+		return anti_magical_critical_level_current;
+	}
+	
+	public double getAntiMagicalCriticalRate_original() {
+		return anti_magical_critical_rate_original;
+	}
+	
+	public double getAntiMagicalCriticalRate_current() {
+		return anti_magical_critical_rate_current;
+	}
+	
+	public int getMagicalCriticalExpandVal_original() {
+		return magical_critical_expand_val_original;
+	}
+	
+	public int getMagicalCriticalExpandVal_current() {
+		return magical_critical_expand_val_current;
+	}
+	
+	public double getMagicalCriticalExpandValPecent_original() {
+		return magical_critical_expand_val_percent_original;
+	}
+	
+	public double getMagicalCriticalExpandValPecent_current() {
+		return magical_critical_expand_val_percent_current;
+	}
+	
+	public int getMagicalATKResult_original() {
+		return magical_ATK_result_original;
+	}
+	
+	public int getMagicalATKResult_current() {
+		return magical_ATK_result_current;
+	}
+	
+	public double getMagicalATKResultRate_original() {
+		return magical_ATK_result_rate_origianl;
+	}
+	
+	public double getMagicalATKResultRate_current() {
+		return magical_ATK_result_rate_current;
+	}
+	
+	public int getPhysicalPracticeLevel() {
+		return physical_practice_level;
+	}
+	
+	public int getAntiPhysicalPracticeLevel() {
+		return anti_physical_practice_level;
+	}
+	
+	public int getMagicalPracticeLevel() {
+		return magical_practice_level;
+	}
+	
+	public int getAntiMagicalPracticeLevel() {
+		return anti_magical_practice_level;
+	}
+	
+	public int getCure_original() {
+		return cure_original;
+	}
+	
+	public int getCure_current() {
+		return cure_current;
+	}
+	
+	public int getHpRecovery_original() {
+		return hp_recovery_original;
+	}
+	
+	public int getHpRecovery_current() {
+		return hp_recovery_current;
+	}
+	
+	public int getMpRecovery_original() {
+		return mp_recovery_original;
+	}
+	
+	public int getMpRecovery_current() {
+		return mp_recovery_current;
+	}
+	
+	public int getVIT_original() {
+		return VIT_original;
+	}
+	
+	public int getVIT_current() {
+		return VIT_current;
+	}
+	
+	public int getSTR_original() {
+		return STR_original;
+	}
+	
+	public int getSTR_current() {
+		return STR_current;
+	}
+	
+	public int getMAG_original() {
+		return MAG_original;
+	}
+	
+	public int getMAG_current() {
+		return MAG_current;
+	}
+	
+	public int getEND_original() {
+		return END_original;
+	}
+	
+	public int getEND_current() {
+		return END_current;
+	}
+	
+	public int getDEX_original() {
+		return DEX_original;
+	}
+	
+	public int getDEX_current() {
+		return DEX_current;
 	}
 	
 	public ArrayList<Buff> getStepBeforeOrderBuffList() {
