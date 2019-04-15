@@ -68,10 +68,6 @@ public class Skill {
 		return isCalcHitRate;
 	}
 	
-	public static int findNormalSkillIdBySect(Sect sect) {
-		return 0;
-	}
-	
 	public static Skill findSkillBySkillId(int skillId) {
 		return null;
 	}

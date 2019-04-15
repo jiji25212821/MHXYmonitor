@@ -111,10 +111,11 @@ public class CombatControl {
 		//dealwithOrder
 		switch (order.getOrderId()) {
 			case Attack:
-				int normalSkillId = Skill.findNormalSkillIdBySect(member.getSectId());
-				executeSkill(normalSkillId, order.getTargetMemberId());
+				int normalSkillGroupId = SkillGroup.findNormalSkillIdBySect(member.getSectId());
+				executeSkillGroup(normalSkillGroupId, order.getTargetMemberId());
 				break;
 			case Skill:
+				executeSkillGroup(order.getSkillGroupId(), order.getTargetMemberId());
 				break;
 			case Object:
 				break;
@@ -136,11 +137,19 @@ public class CombatControl {
 		return true;
 	}
 	
+	public void executeSkillGroup(int skillGroupId, int targetMemberId) {
+		SkillGroup skillGroup = SkillGroup.findSkillGroupBySkillGroupId(skillGroupId);
+		for(Integer integer:skillGroup.getSkillIdList()) {
+			executeSkill(integer, targetMemberId);
+		}
+	}
+	
 	public void executeSkill(int skillId, int targetMemberId) {
 		//首先读取技能信息
 		Skill skill = Skill.findSkillBySkillId(skillId);
 		
-		//判断技能的目标
+		
+		//判断效果的目标
 		ArrayList<Member> targetMemberList = new ArrayList<>();
 		Member tempMember = findMemberByMemberId(targetMemberId);
 		targetMemberList.add(tempMember);
@@ -148,16 +157,36 @@ public class CombatControl {
 			if(i < memberList.size()) {
 				tempMember = memberList.get(i);
 				targetMemberList.add(tempMember);
+				
+				switch (skill.getEffect()) {
+					case Attack:
+						//是否有合击
+						if(isAttackTogether()) {
+							doAttackTogether();
+						} else { //非合击流程
+							//判断命中率
+							if(skill.getIsCalcAttackHitRate()) {
+								if(calcFormulaByFormulaId(Formula.NOMAL_ATTACK_HITRATE_FORMULA_ID) < Math.random()) {
+									executeAttackMiss();
+									return ;
+								}
+							}
+							//走伤害流程
+							//判断有无其他状态影响
+							//判断是否暴击
+							boolean isCritical = false;
+							if(calcFormulaByFormulaId(Formula.PHYSICAL_CRITICAL_HITRATE_FORMULA_ID) >= Math.random()) {
+								isCritical = true;
+							}
+							
+							
+						}
+						break;
+					case Cure:
+						break;
+				}
 			}
 		}
-		
-		switch (skill.getEffect()) {
-			case Attack:
-				break;
-			case Cure:
-				break;
-		}
-		
 	}
 	
 	public void executeBuff(Buff buff) {
@@ -166,6 +195,10 @@ public class CombatControl {
 		//choose target
 		
 		//doskill
+	}
+	
+	public void executeAttackMiss() {
+		
 	}
 	
 	public Member findMemberByMemberId(int memberId) {
@@ -179,6 +212,19 @@ public class CombatControl {
 			}
 		}
 		return memberList.get(0);
+	}
+	
+	public boolean isAttackTogether() {
+		return false;
+	}
+	
+	public void doAttackTogether() {
+		
+	}
+	
+	public double calcFormulaByFormulaId(int formulaId) {
+		Formula formula = Formula.findFormulaByFormulaId(formulaId);
+		return 0;
 	}
 	
 	public static void main(String[] args) {

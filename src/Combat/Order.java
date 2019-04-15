@@ -16,7 +16,7 @@ public class Order {
 	
 	private int targetMemberId;
 	
-	private int skillId;
+	private int skillGroupId;
 	
 	public OrderType getOrderId() {
 		return orderId;
@@ -24,6 +24,10 @@ public class Order {
 	
 	public int getTargetMemberId() {
 		return targetMemberId;
+	}
+	
+	public int getSkillGroupId() {
+		return skillGroupId;
 	}
 	
 	public Order() {
