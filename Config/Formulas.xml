@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<FormulaXml>
+	<Formula id="1" string="args1*(src_physical_ATK_current-dst_physical_DEF_current)" />
+	<Formula id="101" string="(src_hit_current-dst_miss_current)/1000" />
+	<Formula id="111" string="(src_physical_critical_level*10/level+src_physical_critical_rate)-(dst_anti_physical_critical_level*10/level+dst_anti_physical_critical_rate)" />
+	<Formula id="112" string="(src_magical_critical_level*10/level+src_magical_critical_rate)-(dst_anti_magical_critical_level*10/level+dst_anti_magical_critical_rate)" />
+</FormulaXml>

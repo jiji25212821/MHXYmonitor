@@ -1,12 +1,14 @@
 package Combat;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+
 
 public class CombatControl {
 	private ArrayList<Member> memberList;
@@ -14,13 +16,26 @@ public class CombatControl {
 	
 	private HashMap<Member, Order> orderList;
 	
+	public static HashMap<Integer, Formula> Formulas;
+	
 	public CombatControl() {
+		Formula.initializeFormulas();
+		
 		logPrint("A combat is begining");
 		/*
 		while(!combatIsOver()) {
 			doRoundBefore();
 			doListenOrder();
 			doRound();
+		}
+		*/
+		/*
+		Iterator iterator = Formulas.entrySet().iterator();
+		while(iterator.hasNext()) {
+			Map.Entry<Integer, Formula> entry = (Map.Entry<Integer, Formula>)iterator.next();
+			Integer integer = entry.getKey();
+			Formula formula = entry.getValue();
+			System.out.println(integer + ": " + formula.getFormula());
 		}
 		*/
 	}
@@ -175,7 +190,7 @@ public class CombatControl {
 						} else { //非合击流程
 							//判断命中率
 							if(skill.getIsCalcAttackHitRate()) {
-								if((double)calcFormulaByFormulaId(Formula.NOMAL_ATTACK_HITRATE_FORMULA_ID, memberId, targetMemberId) < Math.random()) {
+								if((double)calcFormulaByFormulaId(Formula.NOMAL_ATTACK_HITRATE_FORMULA_ID, memberId, targetMemberId, false, null) < Math.random()) {
 									executeAttackMiss();
 									return ;
 								}
@@ -184,10 +199,14 @@ public class CombatControl {
 							//判断有无其他状态影响
 							//判断是否暴击
 							boolean isCritical = false;
-							if((double)calcFormulaByFormulaId(Formula.PHYSICAL_CRITICAL_HITRATE_FORMULA_ID, memberId, targetMemberId) >= Math.random()) {
+							if((double)calcFormulaByFormulaId(Formula.PHYSICAL_CRITICAL_HITRATE_FORMULA_ID, memberId, targetMemberId, false, null) >= Math.random()) {
 								isCritical = true;
 							}
 							
+							//伤害流程
+							int tempResult = (int)calcFormulaByFormulaId(skill.getFormulaId(), memberId, targetMemberId, isCritical, skill.getFormulaParameter());
+							executeSubHp(targetMemberId, tempResult, true, isCritical);
+							executeAttackHit();
 						}
 						break;
 					case Cure:
@@ -195,6 +214,7 @@ public class CombatControl {
 				}
 			}
 		}
+		executeSkilled();
 	}
 	
 	public void executeBuff(Buff buff) {
@@ -206,6 +226,10 @@ public class CombatControl {
 	}
 	
 	public void executeAttackMiss() {
+		
+	}
+	
+	public void executeAttackHit() {
 		
 	}
 	
@@ -230,7 +254,11 @@ public class CombatControl {
 		
 	}
 	
-	public Number calcFormulaByFormulaId(int formulaId, int srcMemberId, int dstMemberId) {
+	public void executeSkilled() {
+		
+	}
+	
+	public Number calcFormulaByFormulaId(int formulaId, int srcMemberId, int dstMemberId, boolean isCritical, int[] formulaParameter) {
 		Member srcMember = findMemberByMemberId(srcMemberId);
 		Member dstMember = findMemberByMemberId(dstMemberId);
 		
@@ -294,6 +322,38 @@ public class CombatControl {
 		formula = formula.replaceAll("src_speed_original", String.valueOf(srcMember.getSpeed_original()));
 		formula = formula.replaceAll("dst_speed_original", String.valueOf(dstMember.getSpeed_original()));
 		
+		formula = formula.replaceAll("src_seal_level_original", String.valueOf(srcMember.getSealLevel_original()));
+		formula = formula.replaceAll("dst_seal_level_original", String.valueOf(dstMember.getSealLevel_original()));
+		
+		formula = formula.replaceAll("src_seal_level_current", String.valueOf(srcMember.getSealLevel_current()));
+		formula = formula.replaceAll("dst_seal_level_current", String.valueOf(dstMember.getSealLevel_current()));
+		
+		formula = formula.replaceAll("src_seal_rate_original", String.valueOf(srcMember.getSealRate_original()));
+		formula = formula.replaceAll("dst_seal_rate_original", String.valueOf(dstMember.getSealRate_original()));
+		
+		formula = formula.replaceAll("src_seal_rate_current", String.valueOf(srcMember.getSealRate_current()));
+		formula = formula.replaceAll("dst_seal_rate_current", String.valueOf(dstMember.getSealRate_current()));
+		
+		formula = formula.replaceAll("src_anti_seal_level_original", String.valueOf(srcMember.getAntiSealLevel_original()));
+		formula = formula.replaceAll("dst_anti_seal_level_original", String.valueOf(dstMember.getAntiSealLevel_original()));
+		
+		formula = formula.replaceAll("src_anti_seal_level_current", String.valueOf(srcMember.getAntiSealLevel_current()));
+		formula = formula.replaceAll("dst_anti_seal_level_current", String.valueOf(dstMember.getAntiSealLevel_current()));
+		
+		formula = formula.replaceAll("src_anti_seal_rate_original", String.valueOf(srcMember.getAntiSealRate_original()));
+		formula = formula.replaceAll("dst_anti_seal_rate_original", String.valueOf(dstMember.getAntiSealRate_original()));
+		
+		formula = formula.replaceAll("src_anti_seal_rate_current", String.valueOf(srcMember.getAntiSealRate_current()));
+		formula = formula.replaceAll("dst_anti_seal_rate_current", String.valueOf(dstMember.getAntiSealRate_current()));
+		
+		formula = formula.replaceAll("isCritical", String.valueOf(isCritical?1:0));
+		
+		for(int i = 0; i < formulaParameter.length; i++) {
+			String tempString = "args" + i;
+			formula = formula.replaceAll(tempString, String.valueOf(formulaParameter[i]));
+		}
+		
+		
 		try {
 			result = (Number)engine.eval(formula);
 		} catch (ScriptException e) {
@@ -302,6 +362,49 @@ public class CombatControl {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public void executeSubHp(int memberId, int subValue, boolean isPhysical, boolean isCritical) {
+		if(memberId < 0) return;
+		
+		Member member = findMemberByMemberId(memberId);
+		if(member == null) return;
+		
+		int tempSubValue = subValue;
+		int shield = member.getShield();
+		boolean isWithShield = false;
+		if(shield > 0) {//有护盾减护盾值
+			isWithShield = true;
+			//触发扣除护盾值效果
+			
+			boolean isbreakShield = (subValue-shield) >= 0;
+			if(isbreakShield) {
+				tempSubValue = subValue - shield; //注意为零的判断
+				member.setShield(0);
+			} else {
+				tempSubValue = 0;
+				member.setShield(shield - subValue);
+			}
+		}
+		//扣血
+		displaySubHp(tempSubValue, isPhysical, isCritical, isWithShield, member.getShield());
+		
+		//计算是否死亡
+		if(member.getHp_current() < tempSubValue) {
+			executeTodie();
+		}
+	}
+	
+	public void executeTodie() {
+		
+	}
+	
+	public void displaySubHp(int value, boolean isPhysical, boolean isCritical, boolean isWithShield, int shieldValue) {
+		
+	}
+	
+	public void getMemberByFile(String filePath) {
+		
 	}
 	
 	public static void main(String[] args) throws Exception {

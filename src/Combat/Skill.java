@@ -38,6 +38,10 @@ public class Skill {
 	
 	private int skillLevel;
 	
+	private int formulaId;
+	
+	private int[] formulaParameter;
+	
 	private boolean isCalcHitRate;
 	
 	public Skill() {
@@ -66,6 +70,23 @@ public class Skill {
 	
 	public boolean getIsCalcAttackHitRate() {
 		return isCalcHitRate;
+	}
+	
+	public int getFormulaId() {
+		return formulaId;
+	}
+	
+	public int getFormulaParameterLength() {
+		return formulaParameter.length;
+	}
+	
+	public int[] getFormulaParameter() {
+		return formulaParameter;
+	}
+	
+	public int getFormulaParameter(int index) {
+		if(index < 0 || index >= formulaParameter.length) return 0;
+		return formulaParameter[index];
 	}
 	
 	public static Skill findSkillBySkillId(int skillId) {

@@ -31,6 +31,8 @@ public class Member {
 	private int team;
 	private boolean isPlayer;
 	
+	private int level;
+	
 	private int hp_original;
 	private int hp_upper;
 	private int hp_current;
@@ -148,6 +150,8 @@ public class Member {
 	private int anti_physical_practice_level;
 	private int anti_magical_practice_level;
 	
+	private int shield;
+	
 	private ArrayList<Buff> stepBeforeOrderBuffList;
 	
 	private ArrayList<Buff> stepAfterOrderBuffList;
@@ -176,6 +180,10 @@ public class Member {
 	
 	public boolean isPlayer() {
 		return isPlayer;
+	}
+	
+	public int getLevel() {
+		return level;
 	}
 	
 	public int getHp_original() {
@@ -493,6 +501,334 @@ public class Member {
 	public int getDEX_current() {
 		return DEX_current;
 	}
+	
+	public int getShield() {
+		return shield;
+	}
+	
+	
+	public void setHp_original(int hp_original) {
+		this.hp_original = hp_original;
+	}
+	
+	public void setHp_upper(int hp_upper) {
+		this.hp_upper = hp_upper;
+	}
+	
+	public void setHp_current(int hp_current) {
+		this.hp_current = hp_current;
+	}
+	
+	public void setMp_original(int mp_original) {
+		this.mp_original = mp_original;
+	}
+	
+	public void setMp_current(int mp_current) {
+		this.mp_current = mp_current;
+	}
+	
+	public void setPhysicalATK_original(int physical_ATK_original) {
+		this.physical_ATK_original = physical_ATK_original;
+	}
+	
+	public void setPhysicalATK_current(int physical_ATK_current) {
+		this.physical_ATK_current = physical_ATK_current;
+	}
+	
+	public void setMagicalATK_original(int magical_ATK_original) {
+		this.magical_ATK_original = magical_ATK_original;
+	}
+	
+	public void setMagicalATK_current(int magical_ATK_current) {
+		this.magical_ATK_current = magical_ATK_current;
+	}
+	
+	public void setPhysicalDEF_original(int physical_DEF_original) {
+		this.physical_DEF_original = physical_DEF_original;
+	}
+	
+	public void setPhysicalDEF_current(int physical_DEF_current) {
+		this.physical_DEF_current = physical_DEF_current;
+	}
+	
+	public void setMagicalDEF_original(int magical_DEF_original) {
+		this.magical_DEF_original = magical_DEF_original;
+	}
+	
+	public void setMagicalDEF_current(int magical_DEF_current) {
+		this.magical_DEF_current = magical_DEF_current;
+	}
+	
+	public void setHit_original(int hit_original) {
+		this.hit_original = hit_original;
+	}
+	
+	public void setHit_current(int hit_current) {
+		this.hit_current = hit_current;
+	}
+	
+	public void setMiss_original(int miss_original) {
+		this.miss_original = miss_original;
+	}
+	
+	public void setMiss_current(int miss_current) {
+		this.miss_current = miss_current;
+	}
+	
+	public void setSpeed_original(int speed_original) {
+		this.speed_original = speed_original;
+	}
+	
+	public void setSpeed_current(int speed_current) {
+		this.speed_current = speed_current;
+	}
+	
+	public void setSealLevel_original(int seal_level_original) {
+		this.seal_level_original = seal_level_original;
+	}
+	
+	public void setSealLevel_current(int seal_level_current) {
+		this.seal_level_current = seal_level_current;
+	}
+	
+	public void setSealRate_original(double seal_rate_original) {
+		this.seal_rate_original = seal_rate_original;
+	}
+	
+	public void setSealRate_current(double seal_rate_current) {
+		this.seal_rate_current = seal_rate_current;
+	}
+	
+	public void setAntiSealLevel_original(int anti_seal_level_original) {
+		this.anti_seal_level_original = anti_seal_level_original;
+	}
+	
+	public void setAntiSealLevel_current(int anti_seal_level_current) {
+		this.anti_seal_level_current = anti_seal_level_current;
+	}
+	
+	public void setAntiSealRate_original(double anti_seal_rate_original) {
+		this.anti_seal_rate_original = anti_seal_rate_original;
+	}
+	
+	public void setAntiSealRate_current(double anti_seal_rate_current) {
+		this.anti_seal_rate_current = anti_seal_rate_current;
+	}
+	
+	public void setPhysicalCriticalLevel_original(int physical_critical_level_original) {
+		this.physical_critical_level_original = physical_critical_level_original;
+	}
+	
+	public void setPhysicalCriticalLevel_current(int physical_critical_level_current) {
+		this.physical_critical_level_current = physical_critical_level_current;
+	}
+	
+	public void setPhysicalCriticalRate_original(double physical_critical_rate_original) {
+		this.physical_critical_rate_original = physical_critical_rate_original;
+	}
+	
+	public void setPhysicalCriticalRate_current(double physical_critical_rate_current) {
+		this.physical_critical_rate_current = physical_critical_rate_current;
+	}
+	
+	public void setAntiPhysicalCriticalLevel_original(int anti_physical_critical_level_original) {
+		this.anti_physical_critical_level_original = anti_physical_critical_level_original;
+	}
+	
+	public void setAntiPhysicalCriticalLevel_current(int anti_physical_critical_level_current) {
+		this.anti_physical_critical_level_current = anti_physical_critical_level_current;
+	}
+	
+	public void setAntiPhysicalCriticalRate_original(double anti_physical_critical_rate_original) {
+		this.anti_physical_critical_rate_original = anti_physical_critical_rate_original;
+	}
+	
+	public void setAntiPhysicalCriticalRate_current(double anti_physical_critical_rate_current) {
+		this.anti_physical_critical_rate_current = anti_physical_critical_rate_current;
+	}
+	
+	public void setPhysicalCriticalExpandVal_original(int physical_critical_expand_val_original) {
+		this.physical_critical_expand_val_original = physical_critical_expand_val_original;
+	}
+	
+	public void setPhysicalCriticalExpandVal_current(int physical_critical_expand_val_current) {
+		this.physical_critical_expand_val_current = physical_critical_expand_val_current;
+	}
+	
+	public void setPhysicalCriticalExpandValPecent_original(double physical_critical_expand_val_percent_original) {
+		this.physical_critical_expand_val_percent_original = physical_critical_expand_val_percent_original;
+	}
+	
+	public void setPhysicalCriticalExpandValPecent_current(double physical_critical_expand_val_percent_current) {
+		this.physical_critical_expand_val_percent_current = physical_critical_expand_val_percent_current;
+	}
+	
+	public void setPhysicalATKResult_original(int physical_ATK_result_original) {
+		this.physical_ATK_result_original = physical_ATK_result_original;
+	}
+	
+	public void setPhysicalATKResult_current(int physical_ATK_result_current) {
+		this.physical_ATK_result_current = physical_ATK_result_current;
+	}
+	
+	public void setPhysicalATKResultRate_original(int physical_ATK_result_rate_origianl) {
+		this.physical_ATK_result_rate_origianl = physical_ATK_result_rate_origianl;
+	}
+	
+	public void setPhysicalATKResultRate_current(int physical_ATK_result_rate_current) {
+		this.physical_ATK_result_rate_current = physical_ATK_result_rate_current;
+	}
+	
+	public void setMagicalCriticalLevel_original(int magical_critical_level_original) {
+		this.magical_critical_level_original = magical_critical_level_original;
+	}
+	
+	public void setMagicalCriticalLevel_current(int magical_critical_level_current) {
+		this.magical_critical_level_current = magical_critical_level_current;
+	}
+	
+	public void setMagicalCriticalRate_original(double magical_critical_rate_original) {
+		this.magical_critical_rate_original = magical_critical_rate_original;
+	}
+	
+	public void setMagicalCriticalRate_current(double magical_critical_rate_current) {
+		this.magical_critical_rate_current = magical_critical_rate_current;
+	}
+	
+	public void setAntiMagicalCriticalLevel_original(int anti_magical_critical_level_original) {
+		this.anti_magical_critical_level_original = anti_magical_critical_level_original;
+	}
+	
+	public void setAntiMagicalCriticalLevel_current(int anti_magical_critical_level_current) {
+		this.anti_magical_critical_level_current = anti_magical_critical_level_current;
+	}
+	
+	public void setAntiMagicalCriticalRate_original(double anti_magical_critical_rate_original) {
+		this.anti_magical_critical_rate_original = anti_magical_critical_rate_original;
+	}
+	
+	public void setAntiMagicalCriticalRate_current(double anti_magical_critical_rate_current) {
+		this.anti_magical_critical_rate_current = anti_magical_critical_rate_current;
+	}
+	
+	public void setMagicalCriticalExpandVal_original(int magical_critical_expand_val_original) {
+		this.magical_critical_expand_val_original = magical_critical_expand_val_original;
+	}
+	
+	public void setMagicalCriticalExpandVal_current(int magical_critical_expand_val_current) {
+		this.magical_critical_expand_val_current = magical_critical_expand_val_current;
+	}
+	
+	public void setMagicalCriticalExpandValPecent_original(double magical_critical_expand_val_percent_original) {
+		this.magical_critical_expand_val_percent_original = magical_critical_expand_val_percent_original;
+	}
+	
+	public void setMagicalCriticalExpandValPecent_current(double magical_critical_expand_val_percent_current) {
+		this.magical_critical_expand_val_percent_current = magical_critical_expand_val_percent_current;
+	}
+	
+	public void setMagicalATKResult_original(int magical_ATK_result_original) {
+		this.magical_ATK_result_original = magical_ATK_result_original;
+	}
+	
+	public void setMagicalATKResult_current(int magical_ATK_result_current) {
+		this.magical_ATK_result_current = magical_ATK_result_current;
+	}
+	
+	public void setMagicalATKResultRate_original(int magical_ATK_result_rate_origianl) {
+		this.magical_ATK_result_rate_origianl = magical_ATK_result_rate_origianl;
+	}
+	
+	public void setMagicalATKResultRate_current(int magical_ATK_result_rate_current) {
+		this.magical_ATK_result_rate_current = magical_ATK_result_rate_current;
+	}
+	
+	public void setPhysicalPracticeLevel(int physical_practice_level) {
+		this.physical_practice_level = physical_practice_level;
+	}
+	
+	public void setAntiPhysicalPracticeLevel(int physical_practice_level) {
+		this.physical_practice_level = physical_practice_level;
+	}
+	
+	public void setMagicalPracticeLevel(int magical_practice_level) {
+		this.magical_practice_level = magical_practice_level;
+	}
+	
+	public void setAntiMagicalPracticeLevel(int anti_magical_practice_level) {
+		this.anti_magical_practice_level = anti_magical_practice_level;
+	}
+	
+	public void setCure_original(int cure_original) {
+		this.cure_original = cure_original;
+	}
+	
+	public void setCure_current(int cure_current) {
+		this.cure_current = cure_current;
+	}
+	
+	public void setHpRecovery_original(int hp_recovery_original) {
+		this.hp_recovery_original = hp_recovery_original;
+	}
+	
+	public void setHpRecovery_current(int hp_recovery_current) {
+		this.hp_recovery_current = hp_recovery_current;
+	}
+	
+	public void setMpRecovery_original(int mp_recovery_original) {
+		this.mp_recovery_original = mp_recovery_original;
+	}
+	
+	public void setMpRecovery_current(int mp_recovery_current) {
+		this.mp_recovery_current = mp_recovery_current;
+	}
+	
+	public void setVIT_original(int VIT_original) {
+		this.VIT_original = VIT_original;
+	}
+	
+	public void setVIT_current(int VIT_current) {
+		this.VIT_current = VIT_current;
+	}
+	
+	public void setSTR_original(int STR_original) {
+		this.STR_original = STR_original;
+	}
+	
+	public void setSTR_current(int STR_current) {
+		this.STR_current = STR_current;
+	}
+	
+	public void setMAG_original(int MAG_original) {
+		this.MAG_original = MAG_original;
+	}
+	
+	public void setMAG_current(int MAG_current) {
+		this.MAG_current = MAG_current;
+	}
+	
+	public void setEND_original(int END_original) {
+		this.END_original = END_original;
+	}
+	
+	public void setEND_current(int END_current) {
+		this.END_current = END_current;
+	}
+	
+	public void setDEX_original(int DEX_original) {
+		this.DEX_original = DEX_original;
+	}
+	
+	public void setDEX_current(int DEX_current) {
+		this.DEX_current = DEX_current;
+	}
+	
+	public void setShield(int shield) {
+		this.shield = shield;
+	}
+	
+	
+	
 	
 	public ArrayList<Buff> getStepBeforeOrderBuffList() {
 		return stepBeforeOrderBuffList;
